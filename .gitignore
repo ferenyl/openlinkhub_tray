@@ -1,0 +1,34 @@
+# Build output
+/target/
+
+# Rust
+**/*.rs.bk
+*.pdb
+
+# Profiling / coverage
+*.profraw
+*.profdata
+/coverage/
+flamegraph.svg
+perf.data*
+
+# Editors / IDEs
+.idea/
+.vscode/
+.zed/
+.fleet/
+*.swp
+*.swo
+*~
+\#*\#
+.#*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.*
+!.env.example
+.direnv/
