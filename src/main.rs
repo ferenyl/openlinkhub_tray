@@ -51,7 +51,7 @@ fn main() -> ExitCode {
         commands: tx,
     };
 
-    let handle = match tray.spawn() {
+    let handle = match tray.assume_sni_available(true).spawn() {
         Ok(handle) => handle,
         Err(e) => {
             eprintln!("Failed to start tray: {e}");
