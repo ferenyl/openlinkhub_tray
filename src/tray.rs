@@ -2,7 +2,7 @@ use std::process::Command as Process;
 use std::sync::mpsc::Sender;
 
 use ksni::menu::{MenuItem, RadioGroup, RadioItem, StandardItem, SubMenu};
-use ksni::{Status, ToolTip, Tray};
+use ksni::{OfflineReason, Status, ToolTip, Tray};
 
 use crate::api::DeviceProfiles;
 
@@ -150,6 +150,15 @@ impl Tray for OpenLinkHubTray {
 
     fn menu_about_to_show(&mut self) {
         self.send(Command::Refresh);
+    }
+
+    fn watcher_online(&self) {
+        eprintln!("StatusNotifierWatcher online, tray registered");
+    }
+
+    fn watcher_offline(&self, reason: OfflineReason) -> bool {
+        eprintln!("StatusNotifierWatcher offline, waiting for it: {reason:?}");
+        true
     }
 
     fn menu(&self) -> Vec<MenuItem<Self>> {

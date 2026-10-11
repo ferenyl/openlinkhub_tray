@@ -56,6 +56,7 @@ After=graphical-session.target
 [Service]
 ExecStart=%h/.cargo/bin/openlinkhub-tray
 Restart=on-failure
+RestartSec=2
 
 [Install]
 WantedBy=graphical-session.target
